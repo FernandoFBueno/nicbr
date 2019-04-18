@@ -1,0 +1,40 @@
+<div class="centraliza">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">@</span>
+              </div>
+              <input type="text" class="form-control" [(ngModel)]="usuario" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+      </div>
+  </div>
+</div>
+
+<div class="centraliza">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 medidor">
+          <div [ngClass]="noAnimateClass" class="circle"></div>
+          <div [ngClass]="noAnimateClass" class="circle-small"></div>
+          <div [ngClass]="noAnimateClass" class="circle-big"></div>
+          <div [ngClass]="noAnimateClass" class="circle-inner-inner"></div>
+          <div [ngClass]="noAnimateClass" class="circle-inner"></div>
+          <div [ngClass]="noAnimateClass" class="velocidade">{{ DownMbps }} Mbps</div>
+          <div class="texto">DOWN</div>
+      </div>
+      <div class="col-md-4 col-sm-12" id="loader">
+        <h3>Medidor {{ calculando }}</h3>
+      </div>
+      <div class="col-md-4 col-sm-12 medidor">
+        <div [ngClass]="noAnimateClass2" class="circle"></div>
+        <div [ngClass]="noAnimateClass2" class="circle-small"></div>
+        <div [ngClass]="noAnimateClass2" class="circle-big"></div>
+        <div [ngClass]="noAnimateClass2" class="circle-inner-inner"></div>
+        <div [ngClass]="noAnimateClass2" class="circle-inner"></div>
+        <div [ngClass]="noAnimateClass2" class="velocidade">{{ UpMbps }} Mbps</div>
+        <div class="texto">UP</div>
+      </div>
+    </div>
+  </div>
+</div>

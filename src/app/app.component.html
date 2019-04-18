@@ -1,0 +1,50 @@
+<div id="site" [ngClass]="temContraste ? 'contraste' : 'semcontraste'">
+  <div id="aumentaFonte" [ngClass]="tamFonte">
+    <section class="header">
+
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="/"><img src="assets/logo-nicbr.png" alt="{{ title }}" /></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <span><a [routerLink]="['/historico']">HISTÓRICO</a></span>
+              </li>
+              <li class="nav-item active">
+                <span id="btnContraste" (click)="fnContraste()" >CONTRASTE</span>
+              </li>
+              <li class="nav-item">
+                <span id="menosFonte">
+                  <a title="Diminuir Fonte" alt="Diminuir" (click)="fnDiminuirFonte()">A-</a>
+                </span>
+              </li>
+
+              <li class="nav-item">
+                <span id="maisFonte">
+                  <a title="Aumentar Fonte" alt="Aumentar" (click)="fnAumentarFonte()">A+</a>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container conteudo">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+              <div class="titulo">
+                <h1>
+                  Bem vindo ao {{ title }}!
+                </h1>
+              </div>
+              <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+

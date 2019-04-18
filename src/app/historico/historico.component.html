@@ -1,0 +1,26 @@
+<div class="centraliza">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+          <table class="table table-sm table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">Download</th>
+                <th scope="col">Upload</th>
+                <th scope="col">Data</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let hist_ of hist">
+                <td>{{hist_.Usuario}}</td>
+                <td>{{hist_.Download}}</td>
+                <td>{{hist_.Upload}}</td>
+                <td>{{hist_.Data}}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>
