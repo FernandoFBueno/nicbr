@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { LoginService } from './services/login.service';
+import { CollectorService } from './services/collector.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
@@ -12,12 +12,14 @@ import { SESSION_STORAGE, LOCAL_STORAGE, StorageServiceModule} from 'angular-web
 import { NIC_SESSION_STORAGE, SessoesService } from './services/sessoes.service';
 import { NIC_LOCAL_STORAGE, LocalWebStorageService } from './services/localstorage.service';
 import { HistoricoComponent } from './historico/historico.component';
+import { FullstackComponent } from './fullstack/fullstack.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HistoricoComponent
+    HistoricoComponent,
+    FullstackComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { HistoricoComponent } from './historico/historico.component';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    LoginService,
+    CollectorService,
     DataService,
     { provide: NIC_SESSION_STORAGE, useExisting: SESSION_STORAGE },
     { provide: NIC_LOCAL_STORAGE, useExisting: LOCAL_STORAGE },

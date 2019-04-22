@@ -2,6 +2,7 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { SESSION_STORAGE, LOCAL_STORAGE, StorageService, WebStorageService } from 'angular-webstorage-service';
 
 const STORAGE_HISTORICO = 'historico';
+const STORAGE_MEDIA = 'media';
 const STORAGE_FONTSIZE = 'font_size';
 const STORAGE_CONTRASTE = 'contraste';
 
@@ -23,6 +24,18 @@ export class LocalWebStorageService {
 
   public removeHistorico() {
     this.storageSession.remove(STORAGE_HISTORICO);
+  }
+
+  public setMedia(media: string) {
+    this.storageSession.set(STORAGE_MEDIA, media);
+  }
+
+  public getMedia() {
+      return this.storageSession.get(STORAGE_MEDIA);
+  }
+
+  public removeMedia() {
+    this.storageSession.remove(STORAGE_MEDIA);
   }
 
   public setFontSize(fontSize: number) {

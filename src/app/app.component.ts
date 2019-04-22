@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SessoesService } from './services/sessoes.service';
 import { Router } from '@angular/router';
 import { DataService } from './services/data.service';
+import { User } from './models/user';
+
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { DataService } from './services/data.service';
 export class AppComponent implements OnInit {
   title = 'FrontEndSPA';
 
-  public usuario = '';
+  public user = new User();
   fontSize: number;
   tamFonte = '';
   divSite: HTMLElement = document.getElementById('site');
@@ -46,8 +48,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(users => this.usuario = users);
-    this.data.changeMessage(this.usuario);
+    this.data.currentMessage.subscribe(users => this.user = users);
+    this.data.changeMessage(this.user);
 
     if (this.sessoesService.getFontSize() > 0) {
       this.fontSize = this.sessoesService.getFontSize();
@@ -64,5 +66,4 @@ export class AppComponent implements OnInit {
     this.tamFonte = 'Fonte' + this.fontSize;
     this.divSite = document.getElementById('site');
   }
-
 }

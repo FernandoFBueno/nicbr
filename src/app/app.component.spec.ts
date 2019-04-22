@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoricoComponent } from './historico/historico.component';
-import { LoginService } from './services/login.service';
+import { CollectorService } from './services/collector.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { DataService } from './services/data.service';
@@ -36,7 +36,7 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        LoginService,
+        CollectorService,
         DataService,
         { provide: NIC_SESSION_STORAGE, useExisting: SESSION_STORAGE },
         SessoesService

@@ -5,9 +5,9 @@ module.exports = webpackMerge(commonConfig, {
     "devServer": {
         "port": 80,
         "proxy": {
-            "/urlGitHub": {
-                "target": 'https://github.com',
-                "pathRewrite": { '^/urlGitHub': '' },
+            "/urlColletor": {
+                "target": 'http://fernandobueno.tk',
+                "pathRewrite": { '^/urlColletor': '' },
                 "changeOrigin": false,
                 "secure": true
             }

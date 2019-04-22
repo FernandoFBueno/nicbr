@@ -1,16 +1,9 @@
 {
-  "/urlGitHub": {
-    "target": "https://github.com",
+  "/urlCollector": {
+    "target": "http://fernandobueno.tk",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true,
-    "pathRewrite": {"^/urlGitHub" : ""}
-  },
-  "/apiGitHub": {
-    "target": "https://api.github.com",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true,
-    "pathRewrite": {"^/apiGitHub" : ""}
+    "pathRewrite": {"^/urlCollector" : ""}
   }
 }

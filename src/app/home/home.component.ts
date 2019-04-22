@@ -4,6 +4,8 @@ import { SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { NIC_SESSION_STORAGE, SessoesService } from '../services/sessoes.service';
 import { NIC_LOCAL_STORAGE, LocalWebStorageService } from '../services/localstorage.service';
 import { DataService } from '../services/data.service';
+import { Historico } from '../historico/historico.model';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-home',
@@ -18,9 +20,16 @@ export class HomeComponent implements OnInit {
   @Input() calculando: string;
   historico = '';
   historicoJson;
+  histaux = [];
+  mediaCont = 0;
+  mediaDown = 0;
+  mediaValorDown = 0;
+  mediaUp = 0;
+  mediaValorUp = 0;
+  mediaDownload = '';
 
   public usuario = '';
-
+  public user = new User();
   public velocidade: number;
 
   constructor(private sessoesService: SessoesService,
@@ -61,9 +70,28 @@ export class HomeComponent implements OnInit {
       });
       this.historicoJson.push(this.historico);
       this.localStorageService.setHistorico(JSON.stringify(this.historicoJson));
+
+      this.mediaDown = this.mediaDown + this.DownMbps;
+      this.mediaUp = this.mediaUp + this.UpMbps;
+      this.mediaCont++;
+
+      this.mediaValorDown = (this.mediaDown / this.mediaCont);
+      this.mediaValorUp = (this.mediaUp / this.mediaCont);
+
+      this.localStorageService.setMedia(this.mediaValorDown.toFixed(2));
+
+      console.log(this.mediaValorDown.toFixed(2));
+      this.mediaDownload = 'Sua média de Download é: ' + this.localStorageService.getMedia();
+      this.user.Usuario = this.usuario;
+      this.user.mediaDowload = this.mediaValorDown;
+      this.user.mediaUpload = this.mediaValorUp;
+      // persiste os dados da classe User entre as telas sem usar storage
+      // util para passar dados sensiveis sem necessidade de criptografar o storage
+      this.data.changeMessage(this.user);
+
     }
     clearInterval(intervalo);
-    this.calculando = 'concluído';
+    this.calculando = 'Teste concluído';
     this.noAnimateClass = 'no-animate';
     this.noAnimateClass2 = 'no-animate';
   }
@@ -80,13 +108,25 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(users => this.usuario = users);
+    this.data.currentMessage.subscribe(users => this.user = users);
     // this.localStorageService.removeHistorico();
     this.historicoJson = this.localStorageService.getHistorico();
     this.historicoJson = JSON.parse(this.historicoJson);
+
+    for (const value of this.historicoJson) {
+      this.histaux.push(JSON.parse(value));
+    }
+
+    for (const value of this.histaux) {
+      this.mediaDown = this.mediaDown + value.Download;
+      this.mediaUp = this.mediaUp + value.Upload;
+      this.mediaCont++;
+    }
+
     if (this.historicoJson === null) {
       this.historicoJson = [];
     }
+
     this.getVelocidade('Download');
 
     setTimeout(() =>

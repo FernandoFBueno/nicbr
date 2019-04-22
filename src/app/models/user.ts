@@ -1,8 +1,7 @@
 export class User {
 
   constructor(
-      public clientId?: string,
-      public userId?: string,
-      public clientSecret?: string,
-      public repositorios?: any) { }
+      public Usuario?: string,
+      public mediaDowload?: number,
+      public mediaUpload?: number) { }
 }

@@ -1,6 +1,6 @@
 const proxy = [
   {
-    context: '/apiGitHub',
+    context: '/urlCollector',
     target: 'https://github.com'
   }
 ];

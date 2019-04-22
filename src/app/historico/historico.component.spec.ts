@@ -5,7 +5,7 @@ import { AppComponent } from '../app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoricoComponent } from './historico.component';
-import { LoginService } from '../services/login.service';
+import { CollectorService } from '../services/collector.service';
 import { DataService } from '../services/data.service';
 import { LOCAL_STORAGE, SESSION_STORAGE, StorageServiceModule} from 'angular-webstorage-service';
 import { NIC_SESSION_STORAGE, SessoesService } from '../services/sessoes.service';
@@ -34,7 +34,7 @@ describe('HistoricoComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        LoginService,
+        CollectorService,
         DataService,
         { provide: NIC_SESSION_STORAGE, useExisting: SESSION_STORAGE },
         { provide: NIC_LOCAL_STORAGE, useExisting: LOCAL_STORAGE },
